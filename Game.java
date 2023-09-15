@@ -2,7 +2,7 @@ package jerrysadventure;
 import java.time.Year;
 import java.util.Scanner;
 
-public class Game {
+public class Game{
 	private static Scanner scanner;
 
 	public static void main(String[] args) {
@@ -21,13 +21,13 @@ public class Game {
 		// Ask for users name
 		System.out.print("What is your name?: ");
 		String name = scanner.nextLine();
-		System.out.println("Hi! " + name);
+		System.out.println("Hi " + name);
 
 		// Ask user when they were born
 		System.out.print("What year were you born?: ");
 		int birthYear = scanner.nextInt();
 		int age = calculateAge(birthYear);
-		System.out.println("You are " + age + " years old!");
+		System.out.println("You are " + age + " years old");
 
 		// Printing the opening dialogue
 		System.out.println("\nYou are standing in an abandoned university office.\nThere are neither students "
@@ -39,7 +39,7 @@ public class Game {
 		+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
 		+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
 		+ "justice.\n");
-		
+
 		getInput();
 		// ----- Write your code above
 	}
