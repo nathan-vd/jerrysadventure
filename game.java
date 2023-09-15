@@ -1,4 +1,4 @@
-package game;
+package jerrysadventure;
 import java.time.Year;
 import java.util.Scanner;
 
@@ -50,12 +50,33 @@ public class game {
 
 	public static void getInput(){
 		scanner = new Scanner(System.in);
-		System.out.print("What do you want to do?: ");
+		System.out.print("What would you like to do?: ");
 		String input = scanner.nextLine();
 
 		switch(input.toLowerCase()){
 			case "open the door":
 				System.out.println("You open the door");
+				break;
+			case "go north":
+				System.out.println("You go north");
+				break;
+			case "go east":
+				System.out.println("You go east");
+				break;
+			case "go south":
+				System.out.println("You go south");
+				break;
+			case "go west":
+				System.out.println("You go west");
+				break;
+			case "take item":
+				System.out.println("You take the item");
+				break;
+			case "drop item":
+				System.out.println("You drop the item");
+				break;
+			case "use item":
+				System.out.println("You use the item");
 				break;
 			default:
 				System.out.println("Invalid Input");
