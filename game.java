@@ -39,7 +39,7 @@ public class game {
 		+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
 		+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
 		+ "justice.\n");
-
+		//test
 		getInput();
 		// ----- Write your code above
 	}
