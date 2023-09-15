@@ -2,7 +2,7 @@ package jerrysadventure;
 import java.time.Year;
 import java.util.Scanner;
 
-public class game {
+public class Game {
 	private static Scanner scanner;
 
 	public static void main(String[] args) {
