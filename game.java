@@ -39,10 +39,28 @@ public class game {
 		+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
 		+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
 		+ "justice.\n");
+
+		getInput();
 		// ----- Write your code above
 	}
 
 	public static int calculateAge(int year){
 		return Year.now().getValue() - year;
+	}
+
+	public static void getInput(){
+		scanner = new Scanner(System.in);
+		System.out.print("What do you want to do?: ");
+		String input = scanner.nextLine();
+
+		switch(input.toLowerCase()){
+			case "open the door":
+				System.out.println("You open the door");
+				break;
+			default:
+				System.out.println("Invalid Input");
+				getInput();
+				break;
+		}
 	}
 }
