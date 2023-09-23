@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Game{
 	private static Scanner scanner;
+	public static int stateId = 0;
 
 	public static void main(String[] args) {
 		scanner = new Scanner(System.in);
 		// ----- Write your code below
-		
+
 		// Outputting title to the terminal
 		System.out.println("       __                    _         ___       __                 __");
 		System.out.println("      / /__  ____________  _( )_____  /   | ____/ /   _____  ____  / /___   _________");
@@ -19,7 +20,7 @@ public class Game{
 		System.out.println("\nby: Nathan\n\n");
 
 		// Ask for users name
-		System.out.print("What is your name?: ");
+		System.out.print("What is your name??: ");
 		String name = scanner.nextLine();
 		System.out.println("Hi " + name);
 
@@ -40,7 +41,10 @@ public class Game{
 		+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
 		+ "justice.\n");
 
-		getInput();
+		while (stateId != 666){
+			String input = getInput();
+			takeAction(input, stateId);
+		}
 		// ----- Write your code above
 	}
 
@@ -48,40 +52,85 @@ public class Game{
 		return Year.now().getValue() - year;
 	}
 
-	public static void getInput(){
+	public static String getInput(){
 		scanner = new Scanner(System.in);
 		System.out.print("What would you like to do?: ");
-		String input = scanner.nextLine();
+		String input = scanner.nextLine().toLowerCase();
 
-		switch(input.toLowerCase()){
+		// Check whether action inputted was a valid action and returns the action to later change stateId
+		switch(input){
 			case "open the door":
 				System.out.println("You open the door");
-				break;
+				return input;
 			case "go north":
 				System.out.println("You go north");
-				break;
+				return input;
 			case "go east":
 				System.out.println("You go east");
-				break;
+				return input;
 			case "go south":
 				System.out.println("You go south");
-				break;
+				return input;
 			case "go west":
 				System.out.println("You go west");
-				break;
+				return input;
 			case "take item":
 				System.out.println("You take the item");
-				break;
+				return input;
 			case "drop item":
 				System.out.println("You drop the item");
-				break;
+				return input;
 			case "use item":
 				System.out.println("You use the item");
-				break;
+				return input;
+			case "exit":
+			case "quit": 
+				System.out.println("You quit");
+				return input;
 			default:
 				System.out.println("Invalid Input");
-				getInput();
-				break;
+				return getInput();
 		}
+	}
+
+	public static void takeAction(String action, int currentState){
+		switch(action){
+			case "open the door": 
+				if (currentState == 0){
+					stateId = 1;
+				}
+				break;
+			case "take item":
+				if (currentState == 0){
+					stateId = 2;
+				}
+				break;
+			case "go east":
+				if (currentState == 1){
+					stateId = 3;
+				}
+				break;
+			case "exit":
+			case "quit": stateId = 666; break;
+		}
+	}
+
+	public static void printState(int stateId){
+		String story = "";
+
+		switch(stateId){
+			case 1: 
+				story = "You are in a long hallway. There\'s a man wearing glasses at the end of it, he "
+				+ "looks harmless. West is a wall, east is the man, to the north is nothing but "
+				+ "empty offices, a desperate sight. The carpeting in the hallway feels soft, you "
+				+ "hear the clicking of a mouse in the distance. Your office is south (behind "
+				+ "you).";
+				break;
+			case 2: 
+				
+		}
+
+		System.out.println(story);
+		
 	}
 }
