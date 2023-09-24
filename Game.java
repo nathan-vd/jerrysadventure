@@ -20,7 +20,7 @@ public class Game{
 		System.out.println("\nby: Nathan\n\n");
 
 		// Ask for users name
-		System.out.print("What is your name??: ");
+		System.out.print("What is your name?: ");
 		String name = scanner.nextLine();
 		System.out.println("Hi " + name);
 
@@ -31,19 +31,12 @@ public class Game{
 		System.out.println("You are " + age + " years old");
 
 		// Printing the opening dialogue
-		System.out.println("\nYou are standing in an abandoned university office.\nThere are neither students "
-		+ "nor teachers around you.\nThere's a table in front of you with various papers, "
-		+ "pens, a small puzzle toy, and a calculator.\n"
-		+ "A large window shows an empty office building; there are no Zombies in the empty "
-		+ "building (as far as you can tell).\nBehind you is a dark and mysterious door that "
-		+ "leads to a well-lit corridor with a fireproof ceiling and floor.\nYou feel a "
-		+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
-		+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
-		+ "justice.\n");
+		printState(stateId);
 
 		while (stateId != 666){
 			String input = getInput();
 			takeAction(input, stateId);
+			printState(stateId);
 		}
 		// ----- Write your code above
 	}
@@ -119,18 +112,34 @@ public class Game{
 		String story = "";
 
 		switch(stateId){
+			case 0: 
+				story = "You are standing in an abandoned university office.\nThere are neither students "
+				+ "nor teachers around you.\nThere's a table in front of you with various papers, "
+				+ "pens, a small puzzle toy, and a calculator.\n"
+				+ "A large window shows an empty office building; there are no Zombies in the empty "
+				+ "building (as far as you can tell).\nBehind you is a dark and mysterious door that "
+				+ "leads to a well-lit corridor with a fireproof ceiling and floor.\nYou feel a "
+				+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
+				+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
+				+ "justice.";
+				break;
 			case 1: 
-				story = "You are in a long hallway. There\'s a man wearing glasses at the end of it, he "
-				+ "looks harmless. West is a wall, east is the man, to the north is nothing but "
-				+ "empty offices, a desperate sight. The carpeting in the hallway feels soft, you "
-				+ "hear the clicking of a mouse in the distance. Your office is south (behind "
+				story = "You are in a long hallway.\nThere\'s a man wearing glasses at the end of it, he "
+				+ "looks harmless.\nWest is a wall, east is the man, to the north is nothing but "
+				+ "empty offices, a desperate sight.\nThe carpeting in the hallway feels soft, you "
+				+ "hear the clicking of a mouse in the distance.\nYour office is south (behind "
 				+ "you).";
 				break;
 			case 2: 
-				
+				story = "You take the calculator from your desk.\nIt's a Casio FX-85gt Plus.\nThe "
+				+ "display shows the number 0.1134.\nYou turn it upside down; now the Casio "
+				+ "greets you with a friendly “hello”, nice.\nYou hold the calculator in your hand.";
+				break;
+			case 3:
+				story = "The man greets you and starts endlessly talking to you about his children "
+				+ "and his holiday to Benidorm.\nYou die of boredom.";
+				break;
 		}
-
-		System.out.println(story);
-		
+		System.out.println("\n" + story + "\n");
 	}
 }
