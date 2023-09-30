@@ -30,8 +30,6 @@ public class Game{
 		int age = calculateAge(birthYear);
 		System.out.println("You are " + age + " years old");
 
-		// Printing the opening dialogue
-		printState(stateId);
 
 		String[] storyArray = {"You are standing in an abandoned university office.\nThere are neither students "
 				+ "nor teachers around you.\nThere's a table in front of you with various papers, "
@@ -52,23 +50,23 @@ public class Game{
 				+ "greets you with a friendly “hello”, nice.\nYou hold the calculator in your hand.",
 				"The man greets you and starts endlessly talking to you about his children "
 				+ "and his holiday to Benidorm.\nYou die of boredom.",
-				"You enter the hallway with the Casio FX-85gt stand-by. Having this small device "
+				"You enter the hallway with the Casio FX-85gt stand-by.\nHaving this small device "
 				+ "greet you puts you in a good mood, somehow the building feels less lonely than "
-				+ "before. West is a wall, looking east you stare into the darkness, the corridor is too "
-				+ "long to see the end. To the north you see an office with what looks like a small "
-				+ "creature in a corner. The carpeting in the hallway feels soft, you hear someone "
+				+ "before.\nWest is a wall, looking east you stare into the darkness, the corridor is too "
+				+ "long to see the end.\nTo the north you see an office with what looks like a small "
+				+ "creature in a corner.\nThe carpeting in the hallway feels soft, you hear someone "
 				+ "explaining algorithms to your north.",
-				"You enter the office. To your surprise a small dog is sitting in the corner. Surely this "
-				+ "breaks any number of university regulations! In a high-pitched voice the dog tells "
-				+ "you how to write even more cool words on your Casio FX-85gt, good boi! To the "
-				+ "north you see an open window, a ladder hangs down from it, it looks so dangerous! "
+				"You enter the office.\nTo your surprise a small dog is sitting in the corner.\nSurely this "
+				+ "breaks any number of university regulations!\nIn a high-pitched voice the dog tells "
+				+ "you how to write even more cool words on your Casio FX-85gt, good boi!\nTo the "
+				+ "north you see an open window, a ladder hangs down from it, it looks so dangerous!\n"
 				+ "An LCD display shows a youtube video about developing algorithms."
 				};
 
 		while (stateId != 666){
+			System.out.println("\n" + getStory(stateId, storyArray) + "\n");
 			String input = getInput();
 			takeAction(input, stateId);
-			printState(stateId);
 		}
 		// ----- Write your code above
 	}
@@ -85,32 +83,15 @@ public class Game{
 		// Check whether action inputted was a valid action and returns the action to later change stateId
 		switch(input){
 			case "open the door":
-				System.out.println("You open the door");
-				return input;
 			case "go north":
-				System.out.println("You go north");
-				return input;
 			case "go east":
-				System.out.println("You go east");
-				return input;
 			case "go south":
-				System.out.println("You go south");
-				return input;
 			case "go west":
-				System.out.println("You go west");
-				return input;
 			case "take item":
-				System.out.println("You take the item");
-				return input;
 			case "drop item":
-				System.out.println("You drop the item");
-				return input;
 			case "use item":
-				System.out.println("You use the item");
-				return input;
 			case "exit":
 			case "quit": 
-				System.out.println("You quit");
 				return input;
 			default:
 				System.out.println("Invalid Input");
@@ -140,48 +121,13 @@ public class Game{
 			if (transitionMatrix[currentState][i].equals(action)){
 				stateId = i;
 			}
-			else if (action.equalsIgnoreCase("quit")){
+			else if (action.equalsIgnoreCase("quit") || action.equalsIgnoreCase("exit")){
 				stateId = 666;
 			}
 		}
 	}
-
-	public static void printState(int stateId){
-		String story = "";
-
-		switch(stateId){
-			case 0: 
-				story = "You are standing in an abandoned university office.\nThere are neither students "
-				+ "nor teachers around you.\nThere's a table in front of you with various papers, "
-				+ "pens, a small puzzle toy, and a calculator.\n"
-				+ "A large window shows an empty office building; there are no Zombies in the empty "
-				+ "building (as far as you can tell).\nBehind you is a dark and mysterious door that "
-				+ "leads to a well-lit corridor with a fireproof ceiling and floor.\nYou feel a "
-				+ "sense of Wi-Fi around you, the grinding of an LCD operated coffee machine can be "
-				+ "heard in the distance.\nYou are not thirsty, but you rather have a craving for "
-				+ "justice.";
-				break;
-			case 1: 
-				story = "You are in a long hallway.\nThere\'s a man wearing glasses at the end of it, he "
-				+ "looks harmless.\nWest is a wall, east is the man, to the north is nothing but "
-				+ "empty offices, a desperate sight.\nThe carpeting in the hallway feels soft, you "
-				+ "hear the clicking of a mouse in the distance.\nYour office is south (behind "
-				+ "you).";
-				break;
-			case 2: 
-				story = "You take the calculator from your desk.\nIt's a Casio FX-85gt Plus.\nThe "
-				+ "display shows the number 0.1134.\nYou turn it upside down; now the Casio "
-				+ "greets you with a friendly “hello”, nice.\nYou hold the calculator in your hand.";
-				break;
-			case 3:
-				story = "The man greets you and starts endlessly talking to you about his children "
-				+ "and his holiday to Benidorm.\nYou die of boredom.";
-				break;
-		}
-		System.out.println("\n" + story + "\n");
-	}
-
+	//replace printstate with get story
 	public static String getStory(int stateId, String[] storyArray){
-
+		return storyArray[stateId];
 	}
 }
