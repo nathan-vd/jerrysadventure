@@ -8,7 +8,6 @@ public class Game{
 
 	public static void main(String[] args) {
 		scanner = new Scanner(System.in);
-		// ----- Write your code below
 
 		// Outputting title to the terminal
 		System.out.println("       __                    _         ___       __                 __");
@@ -30,7 +29,7 @@ public class Game{
 		int age = calculateAge(birthYear);
 		System.out.println("You are " + age + " years old");
 
-
+		// Initializing story array with possibilities
 		String[] storyArray = {"You are standing in an abandoned university office.\nThere are neither students "
 				+ "nor teachers around you.\nThere's a table in front of you with various papers, "
 				+ "pens, a small puzzle toy, and a calculator.\n"
@@ -62,13 +61,13 @@ public class Game{
 				+ "north you see an open window, a ladder hangs down from it, it looks so dangerous!\n"
 				+ "An LCD display shows a youtube video about developing algorithms."
 				};
-
+			
+		// Game loop
 		while (stateId != 666){
 			System.out.println("\n" + getStory(stateId, storyArray) + "\n");
 			String input = getInput();
-			takeAction(input, stateId);
+			takeAction(input, stateId); 
 		}
-		// ----- Write your code above
 	}
 
 	public static int calculateAge(int year){
@@ -96,7 +95,7 @@ public class Game{
 			default:
 				System.out.println("Invalid Input");
 				return getInput();
-		}
+		} 
 	}
 
 	public static void takeAction(String action, int currentState){
@@ -126,7 +125,7 @@ public class Game{
 			}
 		}
 	}
-	//replace printstate with get story
+
 	public static String getStory(int stateId, String[] storyArray){
 		return storyArray[stateId];
 	}
