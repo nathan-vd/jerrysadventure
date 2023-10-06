@@ -66,7 +66,7 @@ public class Game{
 		while (stateId != 666){
 			System.out.println("\n" + getStory(stateId, storyArray) + "\n");
 			String input = getInput();
-			takeAction(input, stateId); 
+			takeAction(input, stateId, storyArray); 
 		}
 	}
 
@@ -98,12 +98,14 @@ public class Game{
 		} 
 	}
 
-	public static void takeAction(String action, int currentState){
+	public static void takeAction(String action, int currentState, String[] stateArray){
 		
 		String[][] transitionMatrix = new String[6][6];
+		boolean[] seen = new boolean[6];
 		for (int i = 0; i < transitionMatrix.length; i++){
 			for (int c = 0; c < transitionMatrix.length; c++){
 				transitionMatrix[i][c] = "";
+				seen[i] = false;
 			}
 		}
 
@@ -116,6 +118,7 @@ public class Game{
 		transitionMatrix[4][5] = "go north";
 		transitionMatrix[5][1] = "go south";
 
+		tellStory(0, transitionMatrix, null, seen);
 		for (int i = 0; i < transitionMatrix.length; i++){
 			if (transitionMatrix[currentState][i].equals(action)){
 				stateId = i;
@@ -128,5 +131,19 @@ public class Game{
 
 	public static String getStory(int stateId, String[] storyArray){
 		return storyArray[stateId];
+	}
+
+	
+
+	public static void tellStory(int stateId, String[][] transMatrix, String[] stateArray, boolean[] visited){
+		System.out.println(stateArray[stateId]);
+		for (int i = 0; i < transMatrix[stateId].length; i++){
+			if (!(transMatrix[stateId][i].equals("")) && visited[i] != true){
+				System.out.println(transMatrix[stateId][i]);
+				visited[i] = true;
+				tellStory(i, transMatrix, stateArray, visited);
+			}
+		}
+
 	}
 }
